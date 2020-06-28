@@ -6,7 +6,7 @@ body {
 
 /* This must go a part from the html,body style, otherwise it would overlap 
 the element and would not be visible */
-body{
+body {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,12 +30,13 @@ body{
         - 5px: blur radius
         - 0.5px: spread radius
         - rgba: color  */
-  -webkit-box-shadow: 2px 4px 5px 0.5px;
-  -moz-box-shadow: 2px 4px 5px 0.5px;
-  box-shadow: 2px 4px 5px 0.5px;
+  -webkit-box-shadow: 2px 4px 5px 0.5px #979797;
+  -moz-box-shadow: 2px 4px 5px 0.5px #979797;
+  box-shadow: 2px 4px 5px 0.5px #979797;
 }
 
-.paperStack::before, .paperStack::after {
+.paperStack::before,
+.paperStack::after {
   position: absolute;
   content: "";
   background: #eee;
@@ -43,17 +44,32 @@ body{
   height: 95%;
 }
 
-.paperStack::before{
+.paperStack::before {
   z-index: -1;
   top: 0;
   right: 15px;
   transform: rotate(-1deg);
 }
 
-.paperStack::after{
+.paperStack::after {
   z-index: -2;
   top: 5px;
   right: -5px;
   transform: rotate(1deg);
 }
 
+#content{
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 100%;
+  justify-items: center;
+  align-items: center;
+  row-gap: 10pt;
+}
+
+.full-row{
+  width: 100%;
+  height: 100%;
+}
