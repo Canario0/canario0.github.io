@@ -1,7 +1,7 @@
 html,
 body {
   width: 100%;
-  height: 100%;
+  height: auto;
 }
 
 /* This must go a part from the html,body style, otherwise it would overlap 
@@ -15,8 +15,10 @@ body {
 
 .paperStack {
   position: relative;
-  width: 80%;
-  height: 90%;
+  width: 70%;
+  height: auto;
+  margin-top: 20pt;
+  margin-bottom: 20pt;
   background: #eee;
   padding: 10pt;
 }
@@ -58,18 +60,53 @@ body {
   transform: rotate(1deg);
 }
 
-#content{
+#content {
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: minmax(1fr,180px) minmax(1fr,180px) minmax(1fr,180px) minmax(1fr,180px) minmax(1fr,180px) minmax(1fr,180px);
   grid-template-columns: 100%;
   justify-items: center;
   align-items: center;
   row-gap: 10pt;
 }
 
-.full-row{
+.full-row {
   width: 100%;
   height: 100%;
+}
+
+#intro {
+  display: grid;
+  grid-template-rows: 100%;
+  grid-template-columns: 1fr 4fr;
+  justify-items: left;
+  align-items: center;
+  column-gap: 20pt;
+}
+
+/* #intro-image {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  border: 1px solid;
+  border-radius: 20px;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  background: white;
+} */
+
+#intro-image{
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  /* max-height: 168.190px;
+  max-width: 263.992px; */
+}
+
+#intro-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
