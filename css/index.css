@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Proza+Libre:ital,wght@0,600;1,400&display=swap');
+
 html,
 body {
   width: 100%;
@@ -64,7 +66,10 @@ body {
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template-rows: minmax(1fr,180px) minmax(1fr,180px) minmax(1fr,180px) minmax(1fr,180px) minmax(1fr,180px) minmax(1fr,180px);
+  grid-template-rows: minmax(1fr, 180px) minmax(1fr, 180px) minmax(1fr, 180px) minmax(
+      1fr,
+      180px
+    ) minmax(1fr, 180px) minmax(1fr, 180px);
   grid-template-columns: 100%;
   justify-items: center;
   align-items: center;
@@ -85,19 +90,7 @@ body {
   column-gap: 20pt;
 }
 
-/* #intro-image {
-  display: flex;
-  height: 100%;
-  width: 100%;
-  border: 1px solid;
-  border-radius: 20px;
-  overflow: hidden;
-  align-items: center;
-  justify-content: center;
-  background: white;
-} */
-
-#intro-image{
+#intro-image {
   width: 100%;
   height: auto;
   border-radius: 20px;
@@ -109,4 +102,14 @@ body {
   height: 100%;
   display: flex;
   flex-direction: column;
+}
+
+#intro-content > h1 {
+  font-family: 'Proza Libre', sans-serif;
+  font-size: 3em;
+  text-shadow: 1px 1px hsl(0, 0%, 5%),
+               2px 2px hsl(0, 0%, 10%),
+               3px 3px hsl(0, 0%, 15%), 
+               4px 4px hsl(0, 0%, 20%), 
+               5px 5px hsl(0, 0%, 25%);
 }
