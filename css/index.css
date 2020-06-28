@@ -1,4 +1,59 @@
-html, body {
+html,
+body {
   width: 100%;
   height: 100%;
 }
+
+/* This must go a part from the html,body style, otherwise it would overlap 
+the element and would not be visible */
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #eeeeee;
+}
+
+.paperStack {
+  position: relative;
+  width: 80%;
+  height: 90%;
+  background: #eee;
+  padding: 10pt;
+}
+.paperStack,
+.paperStack::before,
+.paperStack::after {
+  border: 1px solid;
+  /* Items of a box-shadow.:
+        - 2px: X or width shift
+        - 4px: Y or height shift
+        - 5px: blur radius
+        - 0.5px: spread radius
+        - rgba: color  */
+  -webkit-box-shadow: 2px 4px 5px 0.5px;
+  -moz-box-shadow: 2px 4px 5px 0.5px;
+  box-shadow: 2px 4px 5px 0.5px;
+}
+
+.paperStack::before, .paperStack::after {
+  position: absolute;
+  content: "";
+  background: #eee;
+  width: 99%;
+  height: 95%;
+}
+
+.paperStack::before{
+  z-index: -1;
+  top: 0;
+  right: 15px;
+  transform: rotate(-1deg);
+}
+
+.paperStack::after{
+  z-index: -2;
+  top: 5px;
+  right: -5px;
+  transform: rotate(1deg);
+}
+
