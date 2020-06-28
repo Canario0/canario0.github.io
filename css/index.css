@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Proza+Libre:ital,wght@0,600;1,400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Proza+Libre:ital,wght@0,600;1,400&display=swap");
 
 html,
 body {
@@ -19,10 +19,10 @@ body {
   position: relative;
   width: 70%;
   height: auto;
-  margin-top: 20pt;
-  margin-bottom: 20pt;
+  margin-top: 30pt;
+  margin-bottom: 30pt;
   background: #eee;
-  padding: 10pt;
+  padding: 30pt;
 }
 .paperStack,
 .paperStack::before,
@@ -34,9 +34,9 @@ body {
         - 5px: blur radius
         - 0.5px: spread radius
         - rgba: color  */
-  -webkit-box-shadow: 2px 4px 5px 0.5px #979797;
-  -moz-box-shadow: 2px 4px 5px 0.5px #979797;
-  box-shadow: 2px 4px 5px 0.5px #979797;
+  -webkit-box-shadow: 2px 2px 5px 0.5px #979797;
+  -moz-box-shadow: 2px 2x 5px 0.5px #979797;
+  box-shadow: 2px 2px 5px 0.5px #979797;
 }
 
 .paperStack::before,
@@ -66,14 +66,13 @@ body {
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template-rows: minmax(1fr, 180px) minmax(1fr, 180px) minmax(1fr, 180px) minmax(
-      1fr,
-      180px
-    ) minmax(1fr, 180px) minmax(1fr, 180px);
+  grid-template-rows:
+    minmax(1fr, 180px) minmax(1fr, 180px) minmax(1fr, 180px) minmax(1fr, 180px)
+    minmax(1fr, 180px) minmax(1fr, 180px);
   grid-template-columns: 100%;
   justify-items: center;
   align-items: center;
-  row-gap: 10pt;
+  row-gap: 20pt;
 }
 
 .full-row {
@@ -84,13 +83,14 @@ body {
 #intro {
   display: grid;
   grid-template-rows: 100%;
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: 0.5fr 2fr 5fr;
   justify-items: left;
   align-items: center;
   column-gap: 20pt;
 }
 
 #intro-image {
+  grid-column: 2 / 3;
   width: 100%;
   height: auto;
   border-radius: 20px;
@@ -100,16 +100,47 @@ body {
 
 #intro-content {
   height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 #intro-content > h1 {
-  font-family: 'Proza Libre', sans-serif;
+  font-family: "Proza Libre", sans-serif;
   font-size: 3em;
-  text-shadow: 1px 1px hsl(0, 0%, 5%),
-               2px 2px hsl(0, 0%, 10%),
-               3px 3px hsl(0, 0%, 15%), 
-               4px 4px hsl(0, 0%, 20%), 
-               5px 5px hsl(0, 0%, 25%);
+  text-shadow: 1px 1px hsl(0, 0%, 5%), 2px 2px hsl(0, 0%, 10%),
+    3px 3px hsl(0, 0%, 15%), 4px 4px hsl(0, 0%, 20%), 5px 5px hsl(0, 0%, 25%);
+}
+
+#media {
+  display: flex;
+  width: auto;
+  justify-content: space-between;
+}
+
+#media > div > a > i {
+  font-size: 2em;
+}
+
+#linkedin > a > i {
+  color: #0077b5;
+  margin-right: 10px;
+}
+
+#github > a > i {
+  color: black;
+  margin-right: 10px;
+}
+
+#mail > a > i {
+  color: black;
+  margin-right: 10px;
+}
+
+#linkedin > a:visited,
+#github > a:visited,
+#mail > a:visited {
+  color: inherit;
 }
