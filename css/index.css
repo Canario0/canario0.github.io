@@ -2,7 +2,7 @@
 
 html,
 body {
-  width: 100%;
+  width: fit-content;
   height: auto;
 }
 
@@ -18,11 +18,19 @@ body {
 .paperStack {
   position: relative;
   width: 70%;
+  min-width: calc(979px + 30pt);
   height: auto;
   margin-top: 30pt;
   margin-bottom: 30pt;
   background: #eee;
   padding: 30pt;
+}
+
+@media (max-width: 1200px){
+  .paperStack{
+    margin-left: 30pt;
+    margin-right: 30pt;
+  }
 }
 .paperStack,
 .paperStack::before,
@@ -69,7 +77,7 @@ body {
   grid-template-rows:
     minmax(1fr, 180px) minmax(1fr, 180px) minmax(1fr, 180px) minmax(1fr, 180px)
     minmax(1fr, 180px) minmax(1fr, 180px);
-  grid-template-columns: 100%;
+  grid-template-columns: minmax(900px, 100%);
   justify-items: center;
   align-items: center;
   row-gap: 20pt;
