@@ -1,17 +1,15 @@
 <script lang="ts">
-  import { Router, Route } from "svelte-navigator";
   import CustomLink from "./lib/CustomLink.svelte";
   import NavBar from "./lib/NavBar.svelte";
   const paths: { [key: string]: string } = {
-    home: "/",
-    whoami: "/whoami",
-    experience: "/experience",
-    education: "/education",
-    contact: "/contact"
+    home: "#home",
+    whoami: "#whoami",
+    experience: "#experience",
+    education: "#education",
+    contact: "#contact"
   };
 </script>
 
-<Router>
   <div class="header-container">
     <NavBar>
       <CustomLink path={paths.home}><p class="link-content">Home</p></CustomLink>
@@ -21,19 +19,16 @@
       <CustomLink path={paths.contact}><p class="link-content">Contact</p></CustomLink>
     </NavBar>
   </div>
-  <div style="z-index: 1; position: relative;">
-    <Route path="/">
+  <div>
+    <div id="home">
       <div>Home</div>
       <section style="min-height: 90vh;">asfas</section>
       <section style="min-height: 90vh;">asfas</section>
-    </Route>
-    <Route path="blog/*">
-      <Route path="/">
+    </div>
+    <div id="whoami">
         <div>magia</div>
-      </Route>
-    </Route>
+    </div>
   </div>
-</Router>
 
 <style>
   .header-container {

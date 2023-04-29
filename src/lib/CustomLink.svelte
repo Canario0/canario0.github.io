@@ -1,12 +1,12 @@
 <script lang="ts">
-  import type { NavigatorLocation } from "svelte-navigator";
-  import { link, useLocation } from "svelte-navigator";
+    import {activeRoute} from "./stores/routing";
+
+
   export let path: string;
-  const location = useLocation();
-  const isActivePath = (location: NavigatorLocation, href: string) => location.pathname === href;
+  const isActivePath = (route: string, href: string) => route=== href;
 </script>
 
-<a href={path} class="link" use:link class:active={isActivePath($location, path)}>
+<a href={path} class="link" class:active={isActivePath($activeRoute, path)}>
   <slot />
 </a>
 
