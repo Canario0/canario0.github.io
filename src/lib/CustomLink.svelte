@@ -1,9 +1,8 @@
 <script lang="ts">
-    import {activeRoute} from "./stores/routing";
-
+  import { activeRoute } from "./stores/routing";
 
   export let path: string;
-  const isActivePath = (route: string, href: string) => route=== href;
+  const isActivePath = (route: string, href: string) => route === href;
 </script>
 
 <a href={path} class="link" class:active={isActivePath($activeRoute, path)}>

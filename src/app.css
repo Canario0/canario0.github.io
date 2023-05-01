@@ -34,7 +34,9 @@ body {
 }
 
 #app {
+  background: black;
   position: relative;
   z-index: 1;
   background: transparent;
+  height: unset;
 }
