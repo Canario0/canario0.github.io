@@ -34,7 +34,8 @@
     display: none;
   }
 
-  @media (max-width: 800px) {
+  /* Midsize Screens */
+  @media (max-width: 869px) {
     .header-links {
       height: unset;
       display: flex;

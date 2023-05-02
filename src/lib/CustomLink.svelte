@@ -15,16 +15,21 @@
     color: var(--text-color);
     transition: all 0.2 linear;
   }
+
   .link:visited {
     color: inherit;
   }
+
   .link:hover {
     color: var(--primary-color);
   }
+
   .link.active {
     color: var(--primary-color);
   }
-  @media (max-width: 800px) {
+
+  /* Midsize Screens */
+  @media (max-width: 869px) {
     .link {
       width: 100%;
       border-width: 0 0 1px 0;

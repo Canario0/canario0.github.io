@@ -2,6 +2,7 @@
   import CustomLink from "./lib/CustomLink.svelte";
   import NavBar from "./lib/NavBar.svelte";
   import Article from "./lib/Article.svelte";
+  import Home from "./pages/Home.svelte";
 
   const paths: { [key: string]: string } = {
     home: "#home",
@@ -23,15 +24,13 @@
 </div>
 <div class="content">
   <Article id="home">
-    <div>Home</div>
-    <section style="min-height: 90vh;">asfas</section>
-    <section style="min-height: 90vh;">asfas</section>
+    <Home />
   </Article>
-  <Article id="whoami">
-    <div>magia</div>
-    <section style="min-height: 90vh;">asfas</section>
-    <section style="min-height: 90vh;">asfas</section>
-  </Article>
+  <!-- <Article id="whoami"> -->
+  <!--   <div>magia</div> -->
+  <!--   <section style="min-height: 90vh;">asfas</section> -->
+  <!--   <section style="min-height: 90vh;">asfas</section> -->
+  <!-- </Article> -->
 </div>
 
 <style>
@@ -57,22 +56,28 @@
     font-weight: 400;
   }
 
-  @media (min-width: 544px) {
+  /* Small Screens */
+  @media (min-width: 625px) {
     .header-container,
     .content {
       max-width: 100%;
     }
   }
 
-  @media (min-width: 922px) {
+  /* Midsize Screens */
+  @media (min-width: 869px) {
     .header-container,
     .content {
       max-width: 1240px;
     }
   }
-  @media (max-width: 800px) {
+
+  /* Midsize Screens */
+  @media (max-width: 869px) {
     .header-container {
       padding: 0;
     }
   }
+
+  /* Big Screens more than 1113px*/
 </style>
