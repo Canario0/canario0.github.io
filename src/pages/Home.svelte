@@ -71,12 +71,18 @@
       flex-wrap: wrap;
     }
 
+    .divider {
+      padding-bottom: 25px;
+    }
+
     .title {
       padding: 0;
+      font-size: 3.5rem;
+      line-height: 3.5rem;
     }
 
     .image-container {
-      padding: 120px 0 25px 0;
+      padding: 60px 0 25px 0;
     }
   }
 </style>
