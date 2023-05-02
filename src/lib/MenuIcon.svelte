@@ -6,7 +6,7 @@
   };
 </script>
 
-<button class="container" on:click={handleClick} on:click class:active>
+<button class="container" alt="menu icon" on:click={handleClick} on:click class:active>
   <div class="bar1" />
   <div class="bar2" />
   <div class="bar3" />
