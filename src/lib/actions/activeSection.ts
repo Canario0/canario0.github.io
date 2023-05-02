@@ -1,8 +1,8 @@
 let intersectionObserver: IntersectionObserver;
-const threshold = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0];
+const threshold = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9];
 let elements: Set<Element>;
 
-function visibleArea(e: Element) {
+function visibleArea(e: Element): number {
   const rect = e.getBoundingClientRect();
   const elementTop = rect.top;
   const elementBottom = rect.bottom;
@@ -12,12 +12,15 @@ function visibleArea(e: Element) {
   const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
   const visibleWidth = Math.min(elementRight, viewportWidth) - Math.max(elementLeft, 0);
   const visibleHeight = Math.min(elementBottom, viewportHeight) - Math.max(elementTop, 0);
+  if (visibleWidth <= 0 || visibleHeight <= 0) {
+    return 0;
+  }
   return visibleWidth * visibleHeight;
 }
 
 type AreaAccumulator = { e: Element; area: number };
 
-export function activeSection(node: Element) {
+export function activeArticle(node: Element) {
   if (!intersectionObserver) {
     elements = new Set();
     intersectionObserver = new IntersectionObserver(
@@ -31,7 +34,7 @@ export function activeSection(node: Element) {
           sizes[0].e.dispatchEvent(new CustomEvent("active"));
         }
       },
-      { root: document.getElementById("#app"), threshold }
+      { threshold }
     );
   }
   elements.add(node);

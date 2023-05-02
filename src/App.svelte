@@ -1,19 +1,14 @@
 <script lang="ts">
   import CustomLink from "./lib/CustomLink.svelte";
   import NavBar from "./lib/NavBar.svelte";
-  import { activeSection } from "./lib/actions/activeSection";
+  import Article from "./lib/Article.svelte";
+
   const paths: { [key: string]: string } = {
     home: "#home",
     whoami: "#whoami",
     experience: "#experience",
     education: "#education",
     contact: "#contact"
-  };
-  const handleVisibility = (id: string) => {
-    return () => {
-      console.log("TEST", id);
-      history.replaceState(undefined, undefined, `#${id}`);
-    };
   };
 </script>
 
@@ -26,28 +21,33 @@
     <CustomLink path={paths.contact}><p class="link-content">Contact</p></CustomLink>
   </NavBar>
 </div>
-<div>
-  <article id="home" use:activeSection on:active={handleVisibility("home")}>
+<div class="content">
+  <Article id="home">
     <div>Home</div>
     <section style="min-height: 90vh;">asfas</section>
     <section style="min-height: 90vh;">asfas</section>
-  </article>
-  <article id="whoami" use:activeSection on:active={handleVisibility("whoami")}>
+  </Article>
+  <Article id="whoami">
     <div>magia</div>
     <section style="min-height: 90vh;">asfas</section>
     <section style="min-height: 90vh;">asfas</section>
-  </article>
+  </Article>
 </div>
 
 <style>
-  .header-container {
+  .header-container,
+  .content {
     padding-left: 20px;
     padding-right: 20px;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .header-container {
     position: sticky;
     top: 0;
   }
+
   .link-content {
     font-size: 1rem;
     min-width: 40px;
@@ -58,14 +58,21 @@
   }
 
   @media (min-width: 544px) {
-    .header-container {
+    .header-container,
+    .content {
       max-width: 100%;
     }
   }
 
   @media (min-width: 922px) {
-    .header-container {
+    .header-container,
+    .content {
       max-width: 1240px;
+    }
+  }
+  @media (max-width: 800px) {
+    .header-container {
+      padding: 0;
     }
   }
 </style>

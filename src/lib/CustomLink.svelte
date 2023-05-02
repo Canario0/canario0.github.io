@@ -24,4 +24,12 @@
   .link.active {
     color: var(--primary-color);
   }
+  @media (max-width: 800px) {
+    .link {
+      width: 100%;
+      border-width: 0 0 1px 0;
+      border-color: var(--border-color);
+      border-style: solid;
+    }
+  }
 </style>
