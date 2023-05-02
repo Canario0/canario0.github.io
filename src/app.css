@@ -1,0 +1,56 @@
+:root {
+  --primary-color: #009bdf;
+  --secondary-color: #bfd1ff;
+  --background-color: #f4f8fb;
+  --text-color: #000000;
+  --subtitle-color: #758398;
+  --border-color: #eaeaea;
+}
+
+html {
+  font-size: 106.25%;
+}
+
+#app,
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: "Barlow Semi Condensed", sans-serif;
+  box-sizing: content-box;
+  background-color: var(--background-color);
+}
+
+#gradient {
+  background-image: url(/background.png);
+  background-position: top right;
+  background-repeat: no-repeat;
+  opacity: 0.3;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  transition: background 0.3s, border-radius 0.3s, opacity 0.3s;
+}
+
+@media (max-width: 1024px) {
+  #gradient {
+    background-size: 450px auto;
+  }
+}
+
+@media (max-width: 767px) {
+  #gradient {
+    background-size: 360px auto;
+  }
+}
+
+#app {
+  position: relative;
+  z-index: 1;
+  background: transparent;
+  height: unset;
+}
