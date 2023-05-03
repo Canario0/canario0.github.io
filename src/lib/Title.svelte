@@ -14,5 +14,6 @@
     font-size: 47px;
     font-family: "Playfair Display", serif;
     margin: 0;
+    word-wrap: break-word;
   }
 </style>
