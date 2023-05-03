@@ -3,6 +3,7 @@
   import NavBar from "./lib/NavBar.svelte";
   import Article from "./lib/Article.svelte";
   import Home from "./pages/Home.svelte";
+  import Whoami from "./pages/Whoami.svelte";
 
   const paths: { [key: string]: string } = {
     home: "#home",
@@ -26,11 +27,9 @@
   <Article id="home">
     <Home />
   </Article>
-  <!-- <Article id="whoami"> -->
-  <!--   <div>magia</div> -->
-  <!--   <section style="min-height: 90vh;">asfas</section> -->
-  <!--   <section style="min-height: 90vh;">asfas</section> -->
-  <!-- </Article> -->
+  <Article id="whoami">
+    <Whoami />
+  </Article>
 </div>
 
 <style>
@@ -45,6 +44,10 @@
   .header-container {
     position: sticky;
     top: 0;
+    background-color: var(--background-color);
+    border-width: 0 0 1px;
+    border-color: var(--border-color);
+    border-style: solid;
   }
 
   .link-content {

@@ -1,5 +1,6 @@
 <script lang="ts">
   import profileImage from "../assets/profile.webp";
+  import Subtitle from "../lib/Subtitle.svelte";
 </script>
 
 <div class="container">
@@ -7,11 +8,13 @@
     <img alt="profile" src={profileImage} class="profile-image" />
   </div>
   <div>
-    <h6 class="subtitle">Hello, My Name Is</h6>
+    <Subtitle style="color: var(--subtitle-color); text-transform: uppercase;"
+      >Hello, My Name Is</Subtitle
+    >
     <div class="divider">
       <div class="line" />
     </div>
-    <h1 class="title">Pablo<br />Renero<br />Balgañón</h1>
+    <h1 class="main-title">Pablo<br />Renero<br />Balgañón</h1>
   </div>
 </div>
 
@@ -36,22 +39,13 @@
     height: 100%;
   }
 
-  .title {
+  .main-title {
     line-height: 4rem;
     font-size: 4rem;
     font-weight: 800;
     font-family: "Playfair Display", serif;
     margin: 0;
     padding: 0 0 100px 0;
-  }
-
-  .subtitle {
-    text-transform: uppercase;
-    color: var(--subtitle-color);
-    line-height: 1.25rem;
-    font-weight: 500;
-    font-size: 1rem;
-    margin: 0 0 10px 0;
   }
 
   .divider {
@@ -65,7 +59,7 @@
     border-width: 2px 0 0 0;
   }
 
-  /* Midsize Screens */
+  /* Small Screens */
   @media (max-width: 625px) {
     .container {
       flex-wrap: wrap;
@@ -75,7 +69,7 @@
       padding-bottom: 25px;
     }
 
-    .title {
+    .main-title {
       padding: 0;
       font-size: 3.5rem;
       line-height: 3.5rem;
