@@ -64,6 +64,7 @@
     font-size: 1.5rem;
     font-weight: 800;
     line-height: 1.5rem;
+    word-wrap: break-word;
   }
 
   .content-entry {
