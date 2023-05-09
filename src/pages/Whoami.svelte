@@ -1,6 +1,8 @@
-<script>
+<script lang="ts">
   import Subtitle from "../lib/Subtitle.svelte";
   import Title from "../lib/Title.svelte";
+  export let title: string;
+  export let entries: string[];
 </script>
 
 <div class="container">
@@ -8,28 +10,18 @@
     <Subtitle style="color: var(--primary-color)">About Me</Subtitle>
   </div>
   <div>
-    <Title>
-      I am a passionate full-stack developer based in Spain with over 5 years of rich experience.
-    </Title>
+    <Title>{title}</Title>
   </div>
   <section class="content">
     <div>
       <h3 class="content-title">I embrace complex challenges and keep up with new technologies.</h3>
     </div>
     <div>
-      <p class="content-entry">
-        As a full-stack developer with 5+ years of experience in various niches, including         research at college. I have a diverse skill set that includes both front-end and
-        back-end development as well as quality assurance (QA) automation. In my previous
-        roles I have taken on complex challenges and developed scalable solutions that
-        meet business and user needs.
-      </p>
-      <p class="content-entry content-entry__light">
-        Working as a QA automation engineer has given me a keen eye for detail and a strong
-        understanding of the importance of testing and quality assurance in the software
-        development process. With a passion for staying up-to-date with the latest
-        technologies and trends, I enjoy exploring new tools and techniques to continually
-        improve my work.
-      </p>
+      {#each entries as entry}
+        <p class="content-entry">
+          {entry}
+        </p>
+      {/each}
     </div>
   </section>
 </div>
@@ -72,7 +64,7 @@
     margin-top: 0px;
   }
 
-  .content-entry__light {
+  .content-entry:nth-child(even) {
     color: var(--text-color-light);
   }
 
