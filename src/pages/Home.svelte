@@ -1,6 +1,8 @@
 <script lang="ts">
   import profileImage from "../assets/profile.webp";
   import Subtitle from "../lib/Subtitle.svelte";
+  export let subtitle: string;
+  export let title: string;
 </script>
 
 <div class="container">
@@ -8,13 +10,11 @@
     <img alt="profile" src={profileImage} class="profile-image" />
   </div>
   <div>
-    <Subtitle style="color: var(--subtitle-color); text-transform: uppercase;"
-      >Hello, My Name Is</Subtitle
-    >
+    <Subtitle style="color: var(--subtitle-color); text-transform: uppercase;">{subtitle}</Subtitle>
     <div class="divider">
       <div class="line" />
     </div>
-    <h1 class="main-title">Pablo<br />Renero<br />Balgañón</h1>
+    <h1 class="main-title">{@html title}</h1>
   </div>
 </div>
 
