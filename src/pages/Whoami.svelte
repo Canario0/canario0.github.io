@@ -1,18 +1,22 @@
 <script lang="ts">
+  import ArticlePage from "../lib/ArticlePage.svelte";
   import Subtitle from "../lib/Subtitle.svelte";
   import Title from "../lib/Title.svelte";
+
   export let title: string;
   export let entries: string[];
 </script>
 
-<div class="container">
-  <div>
-    <Subtitle style="color: var(--primary-color)">About Me</Subtitle>
-  </div>
-  <div>
-    <Title>{title}</Title>
-  </div>
-  <section class="content">
+<ArticlePage>
+  <svelte:fragment slot="title">
+    <div>
+      <Subtitle style="color: var(--primary-color)">About Me</Subtitle>
+    </div>
+    <div>
+      <Title>{title}</Title>
+    </div>
+  </svelte:fragment>
+  <div class="content" slot="content">
     <div>
       <h3 class="content-title">I embrace complex challenges and keep up with new technologies.</h3>
     </div>
@@ -23,20 +27,15 @@
         </p>
       {/each}
     </div>
-  </section>
-</div>
+  </div>
+</ArticlePage>
 
 <style>
-  .container {
-    display: flex;
-    flex-direction: column;
-    padding: 100px 0;
-  }
-
   .content {
     display: flex;
     flex-direction: row;
-    padding: 100px 0 0;
+    padding: 0;
+    margin: 0;
     flex-wrap: nowrap;
   }
 
@@ -76,7 +75,6 @@
   @media (max-width: 869px) {
     .content {
       flex-wrap: wrap;
-      padding: 50px 0 0;
     }
     .content > div:first-child {
       height: unset;
