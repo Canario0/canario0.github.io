@@ -1,8 +1,9 @@
 import type { Page } from "./lib/types/page";
 import Home from "./pages/Home.svelte";
 import Whoami from "./pages/Whoami.svelte";
+import Experience from "./pages/Experience.svelte";
 
-export const PAGES: [Page<Home>, Page<Whoami>] = [
+export const PAGES: [Page<Home>, Page<Whoami>, Page<Experience>] = [
   {
     id: "home",
     linkName: "Home",
@@ -29,5 +30,11 @@ export const PAGES: [Page<Home>, Page<Whoami>] = [
         improve my work.`
       ]
     }
+  },
+  {
+    id: "#experience",
+    linkName: "Experience",
+    component: Experience,
+    props: {}
   }
 ];
