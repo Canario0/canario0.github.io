@@ -82,7 +82,7 @@ Serenity, Selenium, Appium, Rest Assured.`
       experienceEntries: [
         {
           time: "2015 - 2020",
-          company:"University of Valladolid",
+          company: "University of Valladolid",
           title: "Computer Engineering School of Valladolid",
           description: `
           <ul>
@@ -92,8 +92,8 @@ Serenity, Selenium, Appium, Rest Assured.`
         },
         {
           time: "2019",
-          company:"ISTQB",
-          title: "ISTQB Foundation Level",
+          company: "ISTQB",
+          title: "ISTQB Foundation Level"
         }
       ]
     }
