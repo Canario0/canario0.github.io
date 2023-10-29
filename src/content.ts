@@ -98,7 +98,10 @@ Serenity, Selenium, Appium, Rest Assured.`
         {
           time: "2019",
           company: "ISTQB",
-          title: "ISTQB Foundation Level"
+          title: "ISTQB Foundation Level",
+          description: `
+          <p><a href="https://www.istqb.org/certifications/certified-tester-foundation-level-v3-1">ISTQB® CTFL</a> certification provides essential, globally recognized testing knowledge applicable to various software delivery methods, serving as a prerequisite for higher-level ISTQB® certifications.
+          `
         }
       ]
     }
