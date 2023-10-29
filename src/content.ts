@@ -81,6 +81,11 @@ Serenity, Selenium, Appium, Rest Assured.`
       sectionTitle: "Education",
       experienceEntries: [
         {
+          time: "2023 - Now",
+          company: "Universidad a Distancia de Madrid",
+          title: "Full Stack Developer Master's Degree"
+        },
+        {
           time: "2015 - 2020",
           company: "University of Valladolid",
           title: "Computer Engineering School of Valladolid",

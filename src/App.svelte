@@ -3,14 +3,6 @@
   import NavBar from "./lib/NavBar.svelte";
   import Article from "./lib/Article.svelte";
   import { PAGES } from "./content";
-
-  // const paths: { [key: string]: string } = {
-  //   home: "#home",
-  //   whoami: "#whoami",
-  //   experience: "#experience",
-  //   education: "#education",
-  //   contact: "#contact"
-  // };
 </script>
 
 <div class="header-container">
@@ -18,7 +10,6 @@
     {#each PAGES as { id, linkName } (id)}
       <CustomLink path={`#${id}`}><p class="link-content">{linkName}</p></CustomLink>
     {/each}
-    <!-- <CustomLink path={paths.education}><p class="link-content">Education</p></CustomLink> -->
     <!-- <CustomLink path={paths.contact}><p class="link-content">Contact</p></CustomLink> -->
   </NavBar>
 </div>
