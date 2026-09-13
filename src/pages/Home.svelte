@@ -2,12 +2,13 @@
   import profileImage from "../assets/profile.webp";
   import Subtitle from "../lib/Subtitle.svelte";
 
-  let { subtitle, title }: { subtitle: string; title: string } = $props();
+  let { subtitle, title, imageAlt }: { subtitle: string; title: string; imageAlt: string } =
+    $props();
 </script>
 
 <div class="container">
   <div class="image-container">
-    <img alt="profile" src={profileImage} class="profile-image" />
+    <img alt={imageAlt} src={profileImage} class="profile-image" />
   </div>
   <div>
     <Subtitle style="color: var(--subtitle-color); text-transform: uppercase;">{subtitle}</Subtitle>

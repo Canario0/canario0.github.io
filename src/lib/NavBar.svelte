@@ -2,7 +2,7 @@
   import type { Snippet } from "svelte";
   import MenuIcon from "./MenuIcon.svelte";
 
-  let { children }: { children: Snippet } = $props();
+  let { menuLabel, children }: { menuLabel: string; children: Snippet } = $props();
 
   let active = $state(false);
   const handleClick = () => {
@@ -12,7 +12,7 @@
 
 <header class="header">
   <div class="burger">
-    <MenuIcon onclick={handleClick} />
+    <MenuIcon label={menuLabel} onclick={handleClick} />
   </div>
   <nav class="header-links" class:active>
     {@render children()}

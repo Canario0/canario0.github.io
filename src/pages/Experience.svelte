@@ -32,7 +32,7 @@
           </div>
           <div class="timeline-divider">
             <div class="divider"></div>
-            <img width="15px" height="15px" src={arrow} alt="right arrow" />
+            <img width="15px" height="15px" src={arrow} alt="" />
           </div>
           {#if company}
             <div class="experience-company">{company}</div>

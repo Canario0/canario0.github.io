@@ -1,114 +1,110 @@
+import type { Locale } from "./i18n.svelte";
 import type { Page } from "./lib/types/page";
+import { m } from "./paraglide/messages";
 import Home from "./pages/Home.svelte";
 import Whoami from "./pages/Whoami.svelte";
 import Experience from "./pages/Experience.svelte";
 
-export const PAGES: [
-  Page<typeof Home>,
-  Page<typeof Whoami>,
-  Page<typeof Experience>,
-  Page<typeof Experience>
-] = [
-  {
-    id: "home",
-    linkName: "Home",
-    component: Home,
-    props: { subtitle: "Hello, My Name Is", title: "Pablo<br />Renero<br />Balgañón" }
-  },
-  {
-    id: "whoami",
-    linkName: "Whoami",
-    component: Whoami,
-    props: {
-      title:
-        "I am a passionate full-stack developer based in Spain with over 5 years of rich experience.",
-      entries: [
-        `As a full-stack developer with 5+ years of experience in various niches, including
-        research at college. I have a diverse skill set that includes both front-end and
-        back-end development as well as quality assurance (QA) automation. In my previous
-        roles I have taken on complex challenges and developed scalable solutions that
-        meet business and user needs.`,
-        `Working as a QA automation engineer has given me a keen eye for detail and a strong
-        understanding of the importance of testing and quality assurance in the software
-        development process. With a passion for staying up-to-date with the latest
-        technologies and trends, I enjoy exploring new tools and techniques to continually
-        improve my work.`
-      ]
+type Message = (inputs?: Record<string, never>, options?: { locale?: Locale }) => string;
+
+export const getUi = (locale: Locale) => ({
+  menu: m.ui_menu({}, { locale }),
+  language: m.ui_language({}, { locale })
+});
+
+export const getPages = (
+  locale: Locale
+): [Page<typeof Home>, Page<typeof Whoami>, Page<typeof Experience>, Page<typeof Experience>] => {
+  const t = (message: Message) => message({}, { locale });
+
+  return [
+    {
+      id: "home",
+      linkName: t(m.nav_home),
+      component: Home,
+      props: {
+        subtitle: t(m.home_subtitle),
+        title: "Pablo<br />Renero<br />Balgañón",
+        imageAlt: t(m.home_image_alt)
+      }
+    },
+    {
+      id: "whoami",
+      linkName: t(m.nav_whoami),
+      component: Whoami,
+      props: {
+        subtitle: t(m.whoami_subtitle),
+        title: t(m.whoami_title),
+        headline: t(m.whoami_headline),
+        entries: [t(m.whoami_entry_1), t(m.whoami_entry_2)]
+      }
+    },
+    {
+      id: "experience",
+      linkName: t(m.section_experience),
+      component: Experience,
+      props: {
+        sectionTitle: t(m.section_experience),
+        experienceEntries: [
+          {
+            time: t(m.experience_celtiberian_time),
+            company: "Celtiberian Solutions",
+            title: t(m.role_full_stack),
+            description: t(m.experience_celtiberian_description)
+          },
+          {
+            time: t(m.experience_braintec_time),
+            company: "Brain-Tec Group",
+            title: t(m.role_full_stack),
+            description: t(m.experience_braintec_description)
+          },
+          {
+            time: t(m.experience_ayesa_time),
+            company: "Ayesa Spain",
+            title: t(m.role_full_stack),
+            description: t(m.experience_ayesa_description)
+          },
+          {
+            time: t(m.experience_uva_time),
+            company: t(m.org_uva),
+            title: t(m.role_researcher),
+            description: t(m.experience_uva_description)
+          },
+          {
+            time: t(m.experience_alten_time),
+            company: "Alten Spain",
+            title: t(m.role_qa_automation),
+            description: t(m.experience_alten_description)
+          }
+        ]
+      }
+    },
+    {
+      id: "education",
+      linkName: t(m.section_education),
+      component: Experience,
+      props: {
+        sectionTitle: t(m.section_education),
+        experienceEntries: [
+          {
+            time: "2023 - 2025",
+            company: "Universidad a Distancia de Madrid",
+            title: t(m.education_udima_title)
+          },
+          {
+            time: "2015 - 2020",
+            company: t(m.org_uva),
+            title: t(m.education_uva_title),
+            description: t(m.education_uva_description)
+          },
+          {
+            time: "2019",
+            company: "ISTQB",
+            title: "ISTQB Foundation Level",
+            description: t(m.education_istqb_description)
+          }
+        ]
+      }
     }
-  },
-  {
-    id: "experience",
-    linkName: "Experience",
-    component: Experience,
-    props: {
-      sectionTitle: "Experience",
-      experienceEntries: [
-        {
-          time: "May 2022 - Now",
-          company: "Celtiberian Solutions",
-          title: "Full Stack Developer",
-          description: `
-          Working in the international market with different Typescript/JavaScript base technologies like Express, NestJs, React, Angular, and more`
-        },
-        {
-          time: "January 2021 - May 2022",
-          company: "Brain-Tec Group",
-          title: "Full Stack Developer",
-          description: `Working in the European market adapting Odoo (python base ERP) to the needs of the clients.`
-        },
-        {
-          time: "August 2020 - December 2020",
-          company: "Ayesa Spain",
-          title: "Full Stack Developer",
-          description: `Working in the Spanish Administration with Spring and Angular.`
-        },
-        {
-          time: "September 2019 - June 2020",
-          company: "University of Valladolid",
-          title: "Researcher",
-          description: `Working with different Arduino base frameworks to develop an indoor localisation system base on UWB technologies.`
-        },
-        {
-          time: "September 2018 - September 2019",
-          company: "Alten Spain",
-          title: "QA Automation",
-          description: `Testing backend and frontend, in an Adidas’ project. Using frameworks like
-Serenity, Selenium, Appium, Rest Assured.`
-        }
-      ]
-    }
-  },
-  {
-    id: "education",
-    linkName: "Education",
-    component: Experience,
-    props: {
-      sectionTitle: "Education",
-      experienceEntries: [
-        {
-          time: "2023 - 2025",
-          company: "Universidad a Distancia de Madrid",
-          title: "Full Stack Developer Master's Degree"
-        },
-        {
-          time: "2015 - 2020",
-          company: "University of Valladolid",
-          title: "Computer Engineering School of Valladolid",
-          description: `
-          <ul>
-            <li>Minor in Software Engineering.</li>
-            <li>9.9 in my dissertation.</li>
-          </ul>`
-        },
-        {
-          time: "2019",
-          company: "ISTQB",
-          title: "ISTQB Foundation Level",
-          description: `
-          <p><a href="https://www.istqb.org/certifications/certified-tester-foundation-level-v3-1">ISTQB® CTFL</a> certification provides essential, globally recognized testing knowledge applicable to various software delivery methods, serving as a prerequisite for higher-level ISTQB® certifications.
-          `
-        }
-      ]
-    }
-  }
-];
+  ];
+};

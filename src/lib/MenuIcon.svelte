@@ -1,5 +1,5 @@
 <script lang="ts">
-  let { onclick }: { onclick?: (e: MouseEvent) => void } = $props();
+  let { label, onclick }: { label: string; onclick?: (e: MouseEvent) => void } = $props();
 
   let active = $state(false);
 
@@ -9,7 +9,7 @@
   };
 </script>
 
-<button class="container" aria-label="menu icon" onclick={handleClick} class:active>
+<button class="container" aria-label={label} onclick={handleClick} class:active>
   <div class="bar1"></div>
   <div class="bar2"></div>
   <div class="bar3"></div>

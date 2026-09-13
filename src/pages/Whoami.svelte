@@ -3,13 +3,18 @@
   import Subtitle from "../lib/Subtitle.svelte";
   import Title from "../lib/Title.svelte";
 
-  let { title, entries }: { title: string; entries: string[] } = $props();
+  let {
+    subtitle,
+    title,
+    headline,
+    entries
+  }: { subtitle: string; title: string; headline: string; entries: string[] } = $props();
 </script>
 
 <ArticlePage>
   {#snippet heading()}
     <div>
-      <Subtitle style="color: var(--primary-color)">About Me</Subtitle>
+      <Subtitle style="color: var(--primary-color)">{subtitle}</Subtitle>
     </div>
     <div>
       <Title>{title}</Title>
@@ -18,9 +23,7 @@
   {#snippet content()}
     <div class="content">
       <div>
-        <h3 class="content-title">
-          I embrace complex challenges and keep up with new technologies.
-        </h3>
+        <h3 class="content-title">{headline}</h3>
       </div>
       <div>
         {#each entries as entry (entry)}

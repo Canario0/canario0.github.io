@@ -7,7 +7,15 @@ import svelteConfig from "./svelte.config.js";
 
 export default ts.config(
   {
-    ignores: ["dist/", "node_modules/", ".github/", ".vscode/", ".serena/", "pnpm-lock.yaml"]
+    ignores: [
+      "dist/",
+      "node_modules/",
+      ".github/",
+      ".vscode/",
+      ".serena/",
+      "pnpm-lock.yaml",
+      "src/paraglide/"
+    ]
   },
   js.configs.recommended,
   ...ts.configs.recommended,

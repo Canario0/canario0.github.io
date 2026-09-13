@@ -13,12 +13,14 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "check": "svelte-check --tsconfig ./tsconfig.json",
-    "lint": "prettier --check . && eslint .",
-    "format": "prettier --write ."
+    "check": "pnpm i18n && svelte-check --tsconfig ./tsconfig.json",
+    "lint": "pnpm i18n && prettier --check . && eslint .",
+    "format": "prettier --write .",
+    "i18n": "node scripts/check-messages.js && paraglide-js compile --project ./project.inlang --silent"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@inlang/paraglide-js": "^2.25.2",
     "@sveltejs/vite-plugin-svelte": "^7.3.0",
     "@tsconfig/svelte": "^5.0.8",
     "eslint": "^10.10.0",

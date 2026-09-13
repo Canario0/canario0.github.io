@@ -2,18 +2,22 @@
   import CustomLink from "./lib/CustomLink.svelte";
   import NavBar from "./lib/NavBar.svelte";
   import Article from "./lib/Article.svelte";
-  import { PAGES } from "./content";
+  import LanguageSwitcher from "./lib/LanguageSwitcher.svelte";
+  import { getPages, getUi } from "./content";
+  import { i18n } from "./i18n.svelte";
   import type { Page } from "./lib/types/page";
 
-  const pages: Page[] = PAGES;
+  const ui = $derived(getUi(i18n.locale));
+  const pages: Page[] = $derived(getPages(i18n.locale));
 </script>
 
 <div class="header-container">
-  <NavBar>
+  <NavBar menuLabel={ui.menu}>
     {#each pages as { id, linkName } (id)}
       <CustomLink path={`#${id}`}><p class="link-content">{linkName}</p></CustomLink>
     {/each}
     <!-- <CustomLink path={paths.contact}><p class="link-content">Contact</p></CustomLink> -->
+    <LanguageSwitcher label={ui.language} />
   </NavBar>
 </div>
 <div class="content">
