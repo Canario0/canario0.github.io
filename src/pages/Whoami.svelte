@@ -3,31 +3,34 @@
   import Subtitle from "../lib/Subtitle.svelte";
   import Title from "../lib/Title.svelte";
 
-  export let title: string;
-  export let entries: string[];
+  let { title, entries }: { title: string; entries: string[] } = $props();
 </script>
 
 <ArticlePage>
-  <svelte:fragment slot="title">
+  {#snippet heading()}
     <div>
       <Subtitle style="color: var(--primary-color)">About Me</Subtitle>
     </div>
     <div>
       <Title>{title}</Title>
     </div>
-  </svelte:fragment>
-  <div class="content" slot="content">
-    <div>
-      <h3 class="content-title">I embrace complex challenges and keep up with new technologies.</h3>
+  {/snippet}
+  {#snippet content()}
+    <div class="content">
+      <div>
+        <h3 class="content-title">
+          I embrace complex challenges and keep up with new technologies.
+        </h3>
+      </div>
+      <div>
+        {#each entries as entry (entry)}
+          <p class="content-entry">
+            {entry}
+          </p>
+        {/each}
+      </div>
     </div>
-    <div>
-      {#each entries as entry}
-        <p class="content-entry">
-          {entry}
-        </p>
-      {/each}
-    </div>
-  </div>
+  {/snippet}
 </ArticlePage>
 
 <style>

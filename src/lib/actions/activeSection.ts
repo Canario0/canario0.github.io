@@ -1,3 +1,5 @@
+import type { Action } from "svelte/action";
+
 let intersectionObserver: IntersectionObserver;
 const threshold = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9];
 let elements: Set<Element>;
@@ -20,7 +22,11 @@ function visibleArea(e: Element): number {
 
 type AreaAccumulator = { e: Element; area: number };
 
-export function activeArticle(node: Element) {
+export const activeArticle: Action<
+  HTMLElement,
+  undefined,
+  { onactive: (e: CustomEvent) => void }
+> = (node) => {
   if (!intersectionObserver) {
     elements = new Set();
     intersectionObserver = new IntersectionObserver(
@@ -45,4 +51,4 @@ export function activeArticle(node: Element) {
       intersectionObserver.unobserve(node);
     }
   };
-}
+};

@@ -3,20 +3,23 @@
   import NavBar from "./lib/NavBar.svelte";
   import Article from "./lib/Article.svelte";
   import { PAGES } from "./content";
+  import type { Page } from "./lib/types/page";
+
+  const pages: Page[] = PAGES;
 </script>
 
 <div class="header-container">
   <NavBar>
-    {#each PAGES as { id, linkName } (id)}
+    {#each pages as { id, linkName } (id)}
       <CustomLink path={`#${id}`}><p class="link-content">{linkName}</p></CustomLink>
     {/each}
     <!-- <CustomLink path={paths.contact}><p class="link-content">Contact</p></CustomLink> -->
   </NavBar>
 </div>
 <div class="content">
-  {#each PAGES as { id, component, props } (id)}
+  {#each pages as { id, component: PageComponent, props } (id)}
     <Article {id}>
-      <svelte:component this={component} {...props} />
+      <PageComponent {...props} />
     </Article>
   {/each}
 </div>

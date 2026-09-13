@@ -1,11 +1,14 @@
 <script lang="ts">
+  import type { Snippet } from "svelte";
   import ArticleContainer from "./ArticleContainer.svelte";
   import ArticleContentContainer from "./ArticleContentContainer.svelte";
+
+  let { heading, content }: { heading: Snippet; content: Snippet } = $props();
 </script>
 
 <ArticleContainer>
-  <slot name="title" />
+  {@render heading()}
   <ArticleContentContainer>
-    <slot name="content" />
+    {@render content()}
   </ArticleContentContainer>
 </ArticleContainer>

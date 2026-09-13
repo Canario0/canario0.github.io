@@ -1,8 +1,9 @@
-import type { ComponentProps, ComponentType, SvelteComponent } from "svelte";
+import type { Component, ComponentProps } from "svelte";
 
-export type Page<T extends SvelteComponent> = {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type Page<T extends Component<any> = Component<any>> = {
   id: string;
   linkName: string;
-  component: ComponentType<T>;
+  component: T;
   props: ComponentProps<T>;
 };

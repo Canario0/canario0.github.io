@@ -4,22 +4,26 @@
   import arrow from "../assets/arrow.svg";
   import Subtitle from "../lib/Subtitle.svelte";
 
-  export let sectionTitle: string;
-  export let experienceEntries: {
+  type ExperienceEntry = {
     time: string;
     company?: string;
     title: string;
     description?: string;
-  }[];
+  };
+
+  let {
+    sectionTitle,
+    experienceEntries
+  }: { sectionTitle: string; experienceEntries: ExperienceEntry[] } = $props();
 </script>
 
 <ArticlePage>
-  <svelte:fragment slot="title">
+  {#snippet heading()}
     <div>
       <Title>{sectionTitle}</Title>
     </div>
-  </svelte:fragment>
-  <svelte:fragment slot="content">
+  {/snippet}
+  {#snippet content()}
     {#each experienceEntries as { time, company, title, description } (time)}
       <div class="experience-row">
         <div class="experience-timeline">
@@ -27,7 +31,7 @@
             <Subtitle>{time}</Subtitle>
           </div>
           <div class="timeline-divider">
-            <div class="divider" />
+            <div class="divider"></div>
             <img width="15px" height="15px" src={arrow} alt="right arrow" />
           </div>
           {#if company}
@@ -37,12 +41,13 @@
         <div class="experience-description">
           <h2 class="content-title">{title}</h2>
           {#if description}
+            <!-- eslint-disable-next-line svelte/no-at-html-tags -- static content from content.ts -->
             <p>{@html description}</p>
           {/if}
         </div>
       </div>
     {/each}
-  </svelte:fragment>
+  {/snippet}
 </ArticlePage>
 
 <style>

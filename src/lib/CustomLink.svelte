@@ -1,12 +1,14 @@
 <script lang="ts">
+  import type { Snippet } from "svelte";
   import { activeRoute } from "./stores/routing";
 
-  export let path: string;
+  let { path, children }: { path: string; children: Snippet } = $props();
+
   const isActivePath = (route: string, href: string) => route === href;
 </script>
 
 <a href={path} class="link" class:active={isActivePath($activeRoute, path)}>
-  <slot />
+  {@render children()}
 </a>
 
 <style>

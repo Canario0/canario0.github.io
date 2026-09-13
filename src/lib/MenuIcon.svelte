@@ -1,15 +1,18 @@
 <script lang="ts">
-  let active = false;
+  let { onclick }: { onclick?: (e: MouseEvent) => void } = $props();
 
-  const handleClick = () => {
+  let active = $state(false);
+
+  const handleClick = (e: MouseEvent) => {
     active = !active;
+    onclick?.(e);
   };
 </script>
 
-<button class="container" aria-label="menu icon" on:click={handleClick} on:click class:active>
-  <div class="bar1" />
-  <div class="bar2" />
-  <div class="bar3" />
+<button class="container" aria-label="menu icon" onclick={handleClick} class:active>
+  <div class="bar1"></div>
+  <div class="bar2"></div>
+  <div class="bar3"></div>
 </button>
 
 <style>

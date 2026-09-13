@@ -1,16 +1,17 @@
 <script lang="ts">
+  import type { Snippet } from "svelte";
   import { activeArticle } from "./actions/activeSection";
 
-  export let id: string;
+  let { id, children }: { id: string; children: Snippet } = $props();
 
   const handleVisibility = () => {
-    history.replaceState(undefined, undefined, `#${id}`);
+    history.replaceState(undefined, "", `#${id}`);
   };
 </script>
 
-<article use:activeArticle on:active={handleVisibility}>
-  <div {id} class="anchor" />
-  <slot />
+<article use:activeArticle onactive={handleVisibility}>
+  <div {id} class="anchor"></div>
+  {@render children()}
 </article>
 
 <style>

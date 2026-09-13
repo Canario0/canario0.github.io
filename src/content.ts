@@ -3,7 +3,12 @@ import Home from "./pages/Home.svelte";
 import Whoami from "./pages/Whoami.svelte";
 import Experience from "./pages/Experience.svelte";
 
-export const PAGES: [Page<Home>, Page<Whoami>, Page<Experience>, Page<Experience>] = [
+export const PAGES: [
+  Page<typeof Home>,
+  Page<typeof Whoami>,
+  Page<typeof Experience>,
+  Page<typeof Experience>
+] = [
   {
     id: "home",
     linkName: "Home",

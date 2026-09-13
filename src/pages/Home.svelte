@@ -1,8 +1,8 @@
 <script lang="ts">
   import profileImage from "../assets/profile.webp";
   import Subtitle from "../lib/Subtitle.svelte";
-  export let subtitle: string;
-  export let title: string;
+
+  let { subtitle, title }: { subtitle: string; title: string } = $props();
 </script>
 
 <div class="container">
@@ -12,8 +12,9 @@
   <div>
     <Subtitle style="color: var(--subtitle-color); text-transform: uppercase;">{subtitle}</Subtitle>
     <div class="divider">
-      <div class="line" />
+      <div class="line"></div>
     </div>
+    <!-- eslint-disable-next-line svelte/no-at-html-tags -- static content from content.ts -->
     <h1 class="main-title">{@html title}</h1>
   </div>
 </div>

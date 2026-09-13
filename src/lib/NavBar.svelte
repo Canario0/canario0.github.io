@@ -1,7 +1,10 @@
 <script lang="ts">
+  import type { Snippet } from "svelte";
   import MenuIcon from "./MenuIcon.svelte";
 
-  let active = false;
+  let { children }: { children: Snippet } = $props();
+
+  let active = $state(false);
   const handleClick = () => {
     active = !active;
   };
@@ -9,10 +12,10 @@
 
 <header class="header">
   <div class="burger">
-    <MenuIcon on:click={handleClick} />
+    <MenuIcon onclick={handleClick} />
   </div>
   <nav class="header-links" class:active>
-    <slot />
+    {@render children()}
   </nav>
 </header>
 
