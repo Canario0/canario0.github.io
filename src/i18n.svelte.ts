@@ -5,7 +5,7 @@ import {
   locales,
   overwriteGetLocale,
   type Locale
-} from "./paraglide/runtime";
+} from "../.paraglide/runtime";
 
 export { locales, type Locale };
 

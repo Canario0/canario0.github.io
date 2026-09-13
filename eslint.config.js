@@ -14,7 +14,7 @@ export default ts.config(
       ".vscode/",
       ".serena/",
       "pnpm-lock.yaml",
-      "src/paraglide/"
+      ".paraglide/"
     ]
   },
   js.configs.recommended,

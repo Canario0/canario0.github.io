@@ -1,6 +1,6 @@
 import type { Locale } from "./i18n.svelte";
 import type { Page } from "./lib/types/page";
-import { m } from "./paraglide/messages";
+import { m } from "../.paraglide/messages";
 import Home from "./pages/Home.svelte";
 import Whoami from "./pages/Whoami.svelte";
 import Experience from "./pages/Experience.svelte";
@@ -50,7 +50,21 @@ export const getPages = (
             time: t(m.experience_celtiberian_time),
             company: "Celtiberian Solutions",
             title: t(m.role_full_stack),
-            description: t(m.experience_celtiberian_description)
+            description: t(m.experience_celtiberian_description),
+            projects: [
+              {
+                name: "Cipherscale",
+                role: t(m.experience_celtiberian_cipherscale_role),
+                time: t(m.experience_celtiberian_cipherscale_time),
+                description: t(m.experience_celtiberian_cipherscale_description)
+              },
+              {
+                name: "SMBX",
+                role: t(m.role_back_end),
+                time: t(m.experience_celtiberian_smbx_time),
+                description: t(m.experience_celtiberian_smbx_description)
+              }
+            ]
           },
           {
             time: t(m.experience_braintec_time),

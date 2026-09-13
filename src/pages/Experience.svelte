@@ -4,11 +4,19 @@
   import arrow from "../assets/arrow.svg";
   import Subtitle from "../lib/Subtitle.svelte";
 
+  type Project = {
+    name: string;
+    role: string;
+    time: string;
+    description?: string;
+  };
+
   type ExperienceEntry = {
     time: string;
     company?: string;
     title: string;
     description?: string;
+    projects?: Project[];
   };
 
   let {
@@ -24,7 +32,7 @@
     </div>
   {/snippet}
   {#snippet content()}
-    {#each experienceEntries as { time, company, title, description } (time)}
+    {#each experienceEntries as { time, company, title, description, projects } (time)}
       <div class="experience-row">
         <div class="experience-timeline">
           <div class="experience-date">
@@ -43,6 +51,27 @@
           {#if description}
             <!-- eslint-disable-next-line svelte/no-at-html-tags -- static content from content.ts -->
             <p>{@html description}</p>
+          {/if}
+          {#if projects?.length}
+            <ul class="projects">
+              {#each projects as project (project.name)}
+                <li class="project">
+                  <div class="project-marker">
+                    <div class="project-dot"></div>
+                    <div class="project-line"></div>
+                  </div>
+                  <div class="project-content">
+                    <h3 class="project-name">{project.name}</h3>
+                    <p class="project-role">{project.role}</p>
+                    <p class="project-time">{project.time}</p>
+                    {#if project.description}
+                      <!-- eslint-disable-next-line svelte/no-at-html-tags -- static content from content.ts -->
+                      <div class="project-description">{@html project.description}</div>
+                    {/if}
+                  </div>
+                </li>
+              {/each}
+            </ul>
           {/if}
         </div>
       </div>
@@ -103,6 +132,82 @@
     line-height: 1.2rem;
     word-wrap: break-word;
   }
+
+  .projects {
+    --dot-size: 9px;
+    --name-line-height: 1.25rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .project {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+
+  .project-marker {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    flex-shrink: 0;
+    padding-top: calc((var(--name-line-height) - var(--dot-size)) / 2);
+    margin-right: calc(1.75rem - var(--dot-size));
+  }
+  .project-dot {
+    width: var(--dot-size);
+    height: var(--dot-size);
+    box-sizing: border-box;
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+  }
+  .project-line {
+    flex-grow: 1;
+    margin: 4px 0;
+    border-left: 1px solid var(--secondary-color);
+  }
+  .project:last-child .project-line {
+    border-left: 0;
+  }
+
+  .project-content {
+    padding-bottom: 1.25rem;
+  }
+  .project:last-child .project-content {
+    padding-bottom: 0;
+  }
+
+  .project-name {
+    font-family: "Playfair Display", serif;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: var(--name-line-height);
+    color: var(--text-color);
+    margin: 0;
+  }
+
+  .project-role {
+    font-weight: 500;
+    margin: 0.15rem 0 0;
+  }
+
+  .project-time {
+    color: var(--text-color-light);
+    margin: 0.1rem 0 0;
+  }
+
+  .project-description {
+    margin: 0.5rem 0 0;
+  }
+  .project-description :global(p) {
+    margin: 0;
+  }
+  .project-description :global(p + p) {
+    margin-top: 0.5rem;
+  }
+
   /* Small Screens */
   @media (max-width: 625px) {
     .experience-row {
